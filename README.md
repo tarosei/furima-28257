@@ -41,13 +41,14 @@ Things you may want to cover:
 
 - has_many :items
 - has_many :through: users_items
+- has_many : trade
 
 ## items テーブル
 
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
 | item   | string | null: false |
-|picture |  gif   | null: false |
+| image  |        | null: false |
 |category| string | null: false |
 | status | string | null: false |
 | comment| string | null: false |
@@ -56,7 +57,7 @@ Things you may want to cover:
 
 ### Association
 
-- has_many :users
+- has_many : users
 - has_many : through: users_items
 
 
@@ -64,7 +65,7 @@ Things you may want to cover:
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
-| custom | references | null: false, foreign_key: true |
+| customer | references | null: false, foreign_key: true |
 | address| references | null: false, foreign_key: true |
 
 ### Association
@@ -72,3 +73,15 @@ Things you may want to cover:
 - belongs_to :items
 - belongs_to :users
 
+## trade テーブル
+
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+|customer| references | null: false, foreign_key: true |
+| address| references | null: false, foreign_key: true |
+| user_id| references | null: false, foreign_key: true |
+| item_id| references | null: false, foreign_key: true |
+
+### Association
+- has_many : items
+- has_many : through: users_items
