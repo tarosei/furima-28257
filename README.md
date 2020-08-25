@@ -39,8 +39,8 @@ Things you may want to cover:
 
 ### Association
 
-- has_many :items
-- has_many :items, through: users_items
+- has_many : items
+- has_many : items, through: trade
 - has_many : trade
 - has_one : address
 
@@ -48,48 +48,32 @@ Things you may want to cover:
 
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
-| item   |  text  | null: false |
 | image  | string | null: false |
-| comment| string | null: false |
-| price  | integer | null: false |
+| price  | integer | null: false | 
 
 ### Association
 
 - belongs_to :users
-- has_many : through: users_items
+- has_many : through: trade
 
-## users_items テーブル
-
-| Column | Type       | Options                        |
-| ------ | ---------- | ------------------------------ |
-| customer | string | null: false, foreign_key: true |
-| address | string | null: false, foreign_key: true |
-| users_id| string | null: false, foreign_key: true |
-| items_id| string | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :items
-- belongs_to :users
 
 ## trade テーブル
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
-| users  | references | null: false, foreign_key: true |
-| items   | references | null: false, foreign_key: true |
+| user  | references | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true |
+| address| references |null: false, foreign_key: true|
+
 
 ### Association
 - has_one : address
-- belongs_to :item
-- has_many : items, through: users_items
-
+- belongs_to :items
 
 ## address テーブル
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
-|  item  | references | null: false, foreign_key: true |
 |prefecture| references | null: false, foreign_key: true |
 |  city  | references | null: false, foreign_key: true |
 |address_line_1| references | null: false, foreign_key: true |
