@@ -42,30 +42,32 @@ Things you may want to cover:
 - has_many :items
 - has_many :items, through: users_items
 - has_many : trade
-- has_one : address
 
 ## items テーブル
 
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
-| item   |  text  | null: false |
+| item   | string | null: false |
 | image  | string | null: false |
+|category| string | null: false |
+| status | string | null: false |
 | comment| string | null: false |
 | price  | integer | null: false |
+|selling_price| integer | null: false |
 
 ### Association
 
-- belongs_to :users
+- has_many : users
 - has_many : through: users_items
 
 ## users_items テーブル
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
-| customer | string | null: false, foreign_key: true |
-| address | string | null: false, foreign_key: true |
-| users_id| string | null: false, foreign_key: true |
-| items_id| string | null: false, foreign_key: true |
+| customer | references | null: false, foreign_key: true |
+| address| references | null: false, foreign_key: true |
+| users_id| references | null: false, foreign_key: true |
+| items_id| references | null: false, foreign_key: true |
 
 ### Association
 
@@ -81,21 +83,17 @@ Things you may want to cover:
 
 ### Association
 - has_one : address
-- belongs_to :item
+- has_many : items
 - has_many : items, through: users_items
-
 
 ## address テーブル
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
-|  item  | references | null: false, foreign_key: true |
-|prefecture| references | null: false, foreign_key: true |
-|  city  | references | null: false, foreign_key: true |
-|address_line_1| references | null: false, foreign_key: true |
-|address_line_2| references | null: false, foreign_key: true |
-| phone  | references | null: false, foreign_key: true |
+| customer | references | null: false, foreign_key: tru|
+| address| references | null: false, foreign_key: true |
+| users_id| references | null: false, foreign_key: true |
+| items_id| references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to : trade
-- belongs_to : users
