@@ -41,7 +41,6 @@ Things you may want to cover:
 
 - has_many : items
 - has_many : trades
-- has_one : address
 
 ## items テーブル
 
@@ -49,6 +48,9 @@ Things you may want to cover:
 | ------ | ------ | ----------- |
 | image  | string | null: false |
 | price  | integer | null: false | 
+| category| string | null: false | 
+| status | string | null: false | 
+
 
 ### Association
 
@@ -65,6 +67,7 @@ Things you may want to cover:
 ### Association
 - has_one : address
 - belongs_to :item
+- belongs_to :user
 
 ## address テーブル
 
@@ -76,8 +79,6 @@ Things you may want to cover:
 |address_line_2| string |   |
 | phone  | integer | null: false,  |
 | trade  | references | null: false, foreign_key: true |
-| user   | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to : trade
-- belongs_to : user
