@@ -53,17 +53,15 @@ Things you may want to cover:
 
 ### Association
 
-- belongs_to :users
+- has_many : users
 - has_many : trade
-
 
 ## trade テーブル
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
-| user  | string | null: false, foreign_key: true |
-| item   | string | null: false, foreign_key: true |
-
+|  user  |  string  | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true |
 
 ### Association
 - has_one : address
@@ -76,8 +74,10 @@ Things you may want to cover:
 |prefecture| references | null: false, foreign_key: true |
 |  city  | references | null: false, foreign_key: true |
 |address_line_1| references | null: false, foreign_key: true |
-|address_line_2| references | null: false, foreign_key: true |
+|address_line_2| references |  foreign_key: true |
 | phone  | references | null: false, foreign_key: true |
+| trade  | references | null: false, foreign_key: true |
+| user  | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to : trade
