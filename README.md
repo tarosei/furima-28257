@@ -40,7 +40,6 @@ Things you may want to cover:
 ### Association
 
 - has_many : items
-- has_many :items, through: trade
 - has_many : trades
 - has_one : address
 
@@ -54,31 +53,31 @@ Things you may want to cover:
 ### Association
 
 - has_many : users
-- has_many : trade
+- has_one : trade
 
 ## trade テーブル
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
-|  user  |  string  | null: false, foreign_key: true |
+| user   | references | null: false, foreign_key: true |
 | item   | references | null: false, foreign_key: true |
 
 ### Association
 - has_one : address
-- belongs_to :items
+- belongs_to :item
 
 ## address テーブル
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
-|prefecture| references | null: false, foreign_key: true |
-|  city  | references | null: false, foreign_key: true |
-|address_line_1| references | null: false, foreign_key: true |
-|address_line_2| references |  foreign_key: true |
-| phone  | references | null: false, foreign_key: true |
+|prefecture| string | null: false, |
+|  city  | string | null: false,  |
+|address_line_1| string | null: false,  |
+|address_line_2| string |   |
+| phone  | integer | null: false,  |
 | trade  | references | null: false, foreign_key: true |
-| user  | references | null: false, foreign_key: true |
+| user   | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to : trade
-- belongs_to : users
+- belongs_to : user
