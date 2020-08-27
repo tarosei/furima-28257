@@ -47,10 +47,14 @@ Things you may want to cover:
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
 | image  | string | null: false |
-| price  | integer | null: false | 
-| category| string | null: false | 
-| status | string | null: false | 
-| item | string | null: false | 
+| name | string | null: false | 
+| explain | text | null: false | 
+| category| integer | null: false | 
+| carriage | integer | null: false | 
+| area | integer | null: false | 
+| lead_time| integer | null: false | 
+| price | integer | null: false | 
+
 
 ### Association
 
@@ -73,11 +77,12 @@ Things you may want to cover:
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
+| postcode | string | null: false,  |
 |prefecture| integer | null: false, |
 |  city  | string | null: false,  |
 |address_line_1| string | null: false,  |
 |address_line_2| string |   |
-| phone  | string | null: false,  |
+| phone  | string  | null: false,  |
 | trade  | references | null: false, foreign_key: true |
 
 ### Association
