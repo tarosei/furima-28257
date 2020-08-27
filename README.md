@@ -50,6 +50,7 @@ Things you may want to cover:
 | name | string | null: false | 
 | explain | text | null: false | 
 | category| integer | null: false | 
+| status | integer | null: false |
 | carriage | integer | null: false | 
 | area | integer | null: false | 
 | lead_time| integer | null: false | 
