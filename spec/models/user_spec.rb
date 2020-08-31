@@ -19,7 +19,6 @@ RSpec.describe User, type: :model do
     it "emailが空では登録できないこと" do
       @user.email = nil
       @user.valid?
-      binding.pry
       expect(@user.errors.full_messages).to include("Email can't be blank")
     end
 
