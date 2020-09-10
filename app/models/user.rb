@@ -4,7 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_one_attached :image       
-  validates :nick_name, presence: true
+  has_many :items
+  validates :nickname, presence: true
   validates :first_name, :last_name, presence: true,
               format: { with: /\A[ぁ-んァ-ン一-龥]/, message: "は全角で入力してください。"}
   validates :first_name_kana, :last_name_kana, presence: true, 
