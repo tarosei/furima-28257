@@ -16,18 +16,3 @@ function input() {
   })
 };
 window.addEventListener("load", input);
-  // price = document.getElementById("item-price").value;
-    
-
-
-// 1:入力欄のid情報を取得する 
-
-
-// 2:入力欄に値が入力された時のイベントを設置する
-// input.addEventListener("keyup", function(){
-//   console.log("input")
-//   price = document.getElementById("item-price").value;
-//     add_tax_price = price * 0.1
-//     profit = price * 0.9
-// })
-

@@ -36,28 +36,58 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include("Category Category Select", "Category is not a number")
     end
 
+    it 'カテゴリーの情報が"--"ではデータが保存されないこと' do
+      @item.category_id = "0"
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Category must be other than 0")
+    end
+
     it "商品の状態についての情報が必須であること" do
       @item.status_id = nil
       @item.valid?
       expect(@item.errors.full_messages).to include("Status Sales status Select", "Status is not a number")
     end  
 
+    it '商品の状態が"--"ではデータが保存されないこと' do
+      @item.status_id = "0"
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Status must be other than 0")
+    end
+
     it '配送料の負担についての情報が必須であること' do
-      @item.carriage = nil
+      @item.carriage_id = nil
       @item.valid?
       expect(@item.errors.full_messages).to include("Carriage Shipping fee status Select", "Carriage is not a number")
     end
 
+    it '配送料の負担について、"--"ではデータが保存されないこと' do
+      @item.carriage_id = "0"
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Carriage must be other than 0")
+    end
+
     it '発送元の地域についての情報が必須であること' do
-      @item.area = nil
+      @item.area_id = nil
       @item.valid?
       expect(@item.errors.full_messages).to include("Area Prefecture Select", "Area is not a number")
     end
 
+    it '発送元の地域について、"--"ではデータが保存されないこと' do
+      @item.area_id = "0"
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Area must be other than 0")
+    end
+
     it '発送までの日数についての情報が必須であること' do
-      @item.lead_time = nil
+      @item.lead_time_id = nil
       @item.valid?
       expect(@item.errors.full_messages).to include("Lead time Scheduled delivery Select", "Lead time is not a number")
+    end
+
+    it '発送までの日数について、"--"ではデータが保存されないこと' do
+      @item.lead_time_id = "0"
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Lead time must be other than 0")
     end
 
     it "価格についての情報が必須であること" do
@@ -73,7 +103,7 @@ RSpec.describe Item, type: :model do
     end
 
     it "価格の範囲が、¥300~¥9,999,999の間であること" do
-      @item.price = 200
+      @item.price = 200 ||  1000000
       @item.valid?
       expect(@item.errors.full_messages).to include("Price This site is only for under 300 and over 9999999")
     end  
