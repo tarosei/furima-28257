@@ -55,7 +55,7 @@ Things you may want to cover:
 | area | integer | null: false | 
 | lead_time| integer | null: false | 
 | price | integer | null: false | 
-
+| user_id| string | null: false |
 
 ### Association
 
