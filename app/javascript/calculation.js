@@ -1,8 +1,6 @@
 console.log("動いているか")
 
-// 0:windowがloadされた時にイベント発火するようにする
 function input() {
-  // document.getElementById("item-price").innerHTML = "input";
   const inputs = document.getElementById("item-price");
   const fee_field = document.getElementById('add-tax-price');
   const profit_field = document.getElementById('profit');
