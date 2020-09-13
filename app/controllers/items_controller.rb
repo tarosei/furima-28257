@@ -2,11 +2,6 @@ class ItemsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :move_to_index, except: [:index, :show]
 
-   
-  def index
-    @item = Item.order('created_at DESC')
-    
-  end
 
   def new
     @item = Item.new
