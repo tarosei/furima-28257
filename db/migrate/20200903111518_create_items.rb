@@ -10,6 +10,7 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.integer :lead_time_id,       null: false
       t.integer :price,          null: false
       t.string :user_id,         null: false, default:""
+      t.timestamps null: false
     end
   end
 end
