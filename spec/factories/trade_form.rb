@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :trade_form do
-   
     postcode {"888-7777"}
     prefecture {2}
     city {"仙台市"}

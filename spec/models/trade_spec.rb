@@ -10,17 +10,16 @@ RSpec.describe TradeForm, type: :model do
       expect(@trade).to be_valid
     end
 
+    it "tokenが空の場合、商品が購入できないこと" do
+      @trade.token = nil
+      @trade.valid?
+      expect(@trade.errors.full_messages).to include("Token can't be blank")
+    end
+
     it "郵便番号が空では登録できず、ハイフンが必要であること" do
       @trade.postcode = nil
       @trade.valid?
       expect(@trade.errors.full_messages).to include("Postcode Poctcode Half-width number.Include hyphen(-)")
-    end
-    
-
-    it "郵便番号が半角数字で無いと登録できないこと" do
-      @trade.postcode = "９９"
-      @trade.valid?
-      expect(@trade.errors.full_messages).to include("郵便番号が半角数字で無いと登録できないこと")
     end
 
     it '都道府県が"--"ではデータが保存されないこと' do

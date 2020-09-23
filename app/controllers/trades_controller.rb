@@ -1,9 +1,8 @@
 class TradesController < ApplicationController
   before_action :authenticate_user!, only: [:index,:create]
-                                     
+  before_action :set_trade ,only: [:index, :create]             
+  
   def index
-    
-    @item = Item.find(params[:item_id])
     if current_user.id == @item.user.id
       redirect_to root_path
     end
@@ -11,8 +10,6 @@ class TradesController < ApplicationController
 
   def create
     @trade = TradeForm.new(item_params)
-    @item = Item.find(params[:item_id])
-
     if @trade.valid?
       pay_item
       @trade.save
@@ -41,4 +38,7 @@ class TradesController < ApplicationController
     params.permit(:token, :postcode, :prefecture, :city, :address_line_1, :address_line_2, :phone, :item_id).merge(user_id: current_user.id)
   end
 
+  def set_trade
+    @item = Item.find(params[:item_id])
+  end
 end
