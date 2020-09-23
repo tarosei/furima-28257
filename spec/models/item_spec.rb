@@ -8,7 +8,6 @@ RSpec.describe Item, type: :model do
 
   describe '商品新規出品' do
     it "ログインユーザーが出品ページに遷移でき、画像一枚(ActiveStrage使用)、商品名、商品説明、カテゴリ情報、商品の状態、配送料の負担、発送元の地域、発送日数、価格の情報が必須で、価格により非同期で手数料と利益が変化すること" do
-
       expect(@item).to be_valid
     end
 
