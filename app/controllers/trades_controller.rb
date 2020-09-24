@@ -3,7 +3,7 @@ class TradesController < ApplicationController
   before_action :set_trade ,only: [:index, :create]             
   
   def index
-    if current_user.id == @item.user.id
+    if current_user.id == @item.user.id || @item.trade
       redirect_to root_path
     end
   end
