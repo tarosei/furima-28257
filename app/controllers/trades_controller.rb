@@ -19,10 +19,6 @@ class TradesController < ApplicationController
     end
   end
 
-  def update
-    current_user.update(item_params)
-  end
-
   private
 
   def pay_item

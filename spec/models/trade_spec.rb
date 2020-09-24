@@ -16,10 +16,16 @@ RSpec.describe TradeForm, type: :model do
       expect(@trade.errors.full_messages).to include("Token can't be blank")
     end
 
-    it "郵便番号が空では登録できず、ハイフンが必要であること" do
+    it "郵便番号が空では登録できないこと" do
       @trade.postcode = nil
       @trade.valid?
       expect(@trade.errors.full_messages).to include("Postcode Poctcode Half-width number.Include hyphen(-)")
+    end
+
+    it "郵便番号にハイフンが必要であること" do
+      @trade.postcode = "99999999"
+      @trade.valid?
+      expect(@trade.errors.full_messages).to include()
     end
 
     it '都道府県が"--"ではデータが保存されないこと' do
@@ -40,10 +46,22 @@ RSpec.describe TradeForm, type: :model do
       expect(@trade.errors.full_messages).to include("Address line 1 Address line 1 can't be blank")
     end
 
+    it "建物が空でも登録できること" do
+      @trade.address_line_2 = ""
+      @trade.valid?
+      expect(@trade.errors.full_messages).to include()
+    end
+
     it "電話番号が空では登録できないこと" do
       @trade.phone = nil
       @trade.valid?
       expect(@trade.errors.full_messages).to include("Phone Price Half-width number")
+    end
+
+    it "電話番号が11桁以内であること" do
+      @trade.phone = "1111111001111"
+      @trade.valid?
+      expect(@trade.errors.full_messages).to include()
     end
 
   end
