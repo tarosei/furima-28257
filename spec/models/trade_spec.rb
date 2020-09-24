@@ -10,6 +10,12 @@ RSpec.describe TradeForm, type: :model do
       expect(@trade).to be_valid
     end
 
+    it "建物が空でも登録できること" do
+      @trade.address_line_2 = ""
+      @trade.valid?
+      expect(@trade.errors.full_messages).to include()
+    end
+
     it "tokenが空の場合、商品が購入できないこと" do
       @trade.token = nil
       @trade.valid?
@@ -44,12 +50,6 @@ RSpec.describe TradeForm, type: :model do
       @trade.address_line_1 = nil
       @trade.valid?
       expect(@trade.errors.full_messages).to include("Address line 1 Address line 1 can't be blank")
-    end
-
-    it "建物が空でも登録できること" do
-      @trade.address_line_2 = ""
-      @trade.valid?
-      expect(@trade.errors.full_messages).to include()
     end
 
     it "電話番号が空では登録できないこと" do
