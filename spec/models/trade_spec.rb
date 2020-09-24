@@ -20,9 +20,8 @@ RSpec.describe TradeForm, type: :model do
       @trade.token = nil
       @trade.valid?
       expect(@trade.errors.full_messages).to include("Token can't be blank")
-    end
+    end                                 
 
-    
     it "郵便番号が空では登録できないこと" do
       @trade.postcode = nil
       @trade.valid?
